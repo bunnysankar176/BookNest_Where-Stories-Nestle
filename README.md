@@ -152,7 +152,7 @@ Make sure the following are installed on your machine:
 
 ```bash
 https://github.com/bunnysankar176/BookNest_Where-Stories-Nestle.git
-cd BookNest
+cd BookNest_Where-Stories-Nestle
 ```
 
 **2. Install client dependencies**
