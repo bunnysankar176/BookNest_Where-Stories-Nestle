@@ -1,3 +1,5 @@
+# BookNest_Where-Stories-Nestle
+
 # 📚 BookNest: Where Stories Nestle
 
 A full-stack MERN e-commerce web application for buying and selling books, featuring role-based access for Users, Sellers, and Admins.
@@ -149,21 +151,21 @@ Make sure the following are installed on your machine:
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/booknest.git
-cd booknest
+https://github.com/bunnysankar176/BookNest_Where-Stories-Nestle.git
+cd BookNest_Where-Stories-Nestle
 ```
 
 **2. Install client dependencies**
 
 ```bash
-cd client
-npm install
+cd Project Files/Client
+npm install 
 ```
 
 **3. Install server dependencies**
 
 ```bash
-cd ../server
+cd ../Server
 npm install
 ```
 
@@ -191,8 +193,8 @@ CLOUDINARY_API_SECRET=your_api_secret
 **Start the backend server:**
 
 ```bash
-cd server
-npm start
+cd Server
+npm start && npm run dev && node server.js
 ```
 
 > Runs on: `http://localhost:5000`
@@ -200,7 +202,7 @@ npm start
 **Start the frontend development server:**
 
 ```bash
-cd client
+cd Client
 npm run dev
 ```
 
@@ -306,11 +308,36 @@ BookNest uses **JWT (JSON Web Token)** based authentication:
 
 | Screen | Preview |
 |---|---|
-| Home Page | *(Add screenshot)* |
-| Book Detail | *(Add screenshot)* |
-| Cart & Checkout | *(Add screenshot)* |
-| Seller Dashboard | *(Add screenshot)* |
-| Admin Panel | *(Add screenshot)* |
+| Home Page | <img width="1920" height="1020" alt="Screenshot 2026-02-28 173348" src="https://github.com/user-attachments/assets/766cb8bd-6463-4897-a922-701d656e72bf" />
+|
+ | Screen | Preview |
+|---|---|
+| Books | ![BooksPage](https://github.com/user-attachments/assets/98326283-b978-4a36-9449-67b5119f2fa5)
+|
+ | Screen | Preview |
+|---|---|
+| Book Details | ![Screenshot_28-2-2026_143949_localhost](https://github.com/user-attachments/assets/75465a46-a71c-4a3f-848b-1115a7779786)
+|
+ | Screen | Preview |
+|---|---|
+| Cart | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144042" src="https://github.com/user-attachments/assets/d92144f8-601f-4b98-932f-7cee93a437cb" />
+|
+| Screen | Preview |
+|---|---|
+| Checkout | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144122" src="https://github.com/user-attachments/assets/91908ea5-fb3f-4bcf-b67f-43c87bdbf70e" />
+ |
+ | Screen | Preview |
+|---|---|
+| Orders History | <img width="1920" height="1020" alt="Screenshot 2026-02-28 174722" src="https://github.com/user-attachments/assets/0485fdb7-a97c-4f5f-8782-d2c3d44a242d" />
+|
+ | Screen | Preview |
+|---|---|
+| Seller Dashboard | <img width="1920" height="1020" alt="Screenshot 2026-02-28 175448" src="https://github.com/user-attachments/assets/d2779c6e-bbe0-4995-a36f-27f6f8d6d781" />
+| 
+ | Screen | Preview |
+|---|---|
+| Admin Panel | <img width="1920" height="1020" alt="Screenshot 2026-02-28 175231" src="https://github.com/user-attachments/assets/dc11acbf-bf98-448c-9298-8f9c1358d365" />
+|
 
 ---
 
