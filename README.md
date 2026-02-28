@@ -320,8 +320,7 @@ BookNest uses **JWT (JSON Web Token)** based authentication:
 |
 | Screen | Preview |
 |---|---|
-| Checkout |
-<img width="1920" height="1020" alt="Screenshot 2026-02-28 144122" src="https://github.com/user-attachments/assets/91908ea5-fb3f-4bcf-b67f-43c87bdbf70e" />
+| Checkout | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144122" src="https://github.com/user-attachments/assets/91908ea5-fb3f-4bcf-b67f-43c87bdbf70e" />
  |
  | Screen | Preview |
 |---|---|
