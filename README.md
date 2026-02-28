@@ -86,7 +86,7 @@ Whether you're a reader looking for your next favorite book, a seller managing y
 
 ```
 booknest/
-├── client/                         # React frontend
+├── Frontend/                         # React frontend
 │   └── src/
 │       ├── components/
 │       │   ├── common/             # Navbar, ProtectedRoute, RoleBasedRoute, ProfileForm
@@ -108,7 +108,7 @@ booknest/
 │       │   └── ProfilePage.jsx
 │       └── services/               # Axios API service modules
 │
-└── server/                         # Node.js + Express backend
+└── Backend/                         # Node.js + Express backend
     ├── config/                     # Database connection
     ├── controllers/                # Business logic
     │   ├── adminController.js
@@ -158,14 +158,14 @@ cd BookNest_Where-Stories-Nestle
 **2. Install client dependencies**
 
 ```bash
-cd Project Files/Client
+cd Project Files/Frontend
 npm install 
 ```
 
 **3. Install server dependencies**
 
 ```bash
-cd ../Server
+cd ../Backend
 npm install
 ```
 
@@ -173,7 +173,7 @@ npm install
 
 ### Environment Variables
 
-Create a `.env` file inside the `server/` directory and add the following:
+Create a `.env` file inside the `Backend/` directory and add the following:
 
 ```env
 MONGO_URI=mongodb://localhost:27017/booknest
@@ -193,7 +193,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 **Start the backend server:**
 
 ```bash
-cd Server
+cd Backend
 npm start && npm run dev && node server.js
 ```
 
@@ -202,7 +202,7 @@ npm start && npm run dev && node server.js
 **Start the frontend development server:**
 
 ```bash
-cd Client
+cd Frontend
 npm run dev
 ```
 
