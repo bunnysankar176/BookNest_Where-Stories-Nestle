@@ -1,0 +1,233 @@
+/* --- Variables --- */
+:root {
+  --im-primary: #4f46e5;
+  --im-primary-light: #e0e7ff;
+  --im-danger: #ef4444;
+  --im-warning: #f59e0b;
+  --im-border: #e5e7eb;
+  --im-bg-muted: #f9fafb;
+  --im-text-main: #111827;
+  --im-text-muted: #6b7280;
+  --im-radius: 12px;
+  --im-transition: all 0.2s ease-in-out;
+}
+
+.im-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* --- Upload Box --- */
+.im-upload-box {
+  border: 2px dashed var(--im-border);
+  border-radius: var(--im-radius);
+  background-color: var(--im-bg-muted);
+  transition: var(--im-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.im-upload-box:hover, .im-upload-box:focus-within {
+  border-color: var(--im-primary);
+  background-color: var(--im-primary-light);
+}
+
+.im-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.im-upload-icon-wrapper {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+  color: var(--im-primary);
+}
+
+.im-upload-title {
+  font-weight: 600;
+  color: var(--im-text-main);
+  font-size: 1rem;
+}
+
+.im-upload-subtitle {
+  font-size: 0.85rem;
+  color: var(--im-text-muted);
+}
+
+/* --- Gallery & Grid --- */
+.im-gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.im-gallery-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--im-text-main);
+}
+
+.im-gallery-hint {
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--im-text-muted);
+  font-size: 0.8rem;
+  background: var(--im-bg-muted);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.im-image-grid {
+  display: grid;
+  /* Automatically fits as many 120px columns as possible */
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Image Cards --- */
+.im-image-card {
+  position: relative;
+  aspect-ratio: 3 / 4; /* Perfect for book covers */
+  border-radius: var(--im-radius);
+  overflow: hidden;
+  background-color: var(--im-bg-muted);
+  border: 2px solid transparent;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.im-image-card:active {
+  cursor: grabbing;
+}
+
+.im-image-card.is-dragging {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  border-color: var(--im-primary);
+}
+
+.im-image-card.is-cover {
+  border-color: var(--im-primary);
+}
+
+.im-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none; /* Prevents image ghosting during drag */
+}
+
+/* --- Badges & Actions --- */
+.im-cover-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: var(--im-primary);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+.im-actions {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  gap: 0.4rem;
+  opacity: 1; /* Always visible on mobile, can be changed to 0 for desktop hover */
+}
+
+.im-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--im-text-main);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: var(--im-transition);
+  backdrop-filter: blur(4px);
+}
+
+.im-btn:hover {
+  transform: scale(1.1);
+}
+
+.im-btn-remove:hover {
+  background-color: var(--im-danger);
+  color: white;
+}
+
+.im-btn-cover.active {
+  background-color: var(--im-warning);
+  color: white;
+}
+
+.im-btn-cover:hover:not(.active) {
+  background-color: var(--im-warning);
+  color: white;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 640px) {
+  .im-image-grid {
+    /* Slightly smaller grid on mobile to fit at least 2 covers */
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .im-upload-label {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Desktop Hover Effects */
+@media (min-width: 641px) {
+  .im-actions {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--im-transition);
+  }
+  
+  .im-image-card:hover .im-actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Keep actions visible if it's the cover */
+  .im-image-card.is-cover .im-actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.im-upload-box.drag-over {
+  border-color: var(--im-primary);
+  background-color: var(--im-primary-light);
+  transform: scale(1.01);
+}

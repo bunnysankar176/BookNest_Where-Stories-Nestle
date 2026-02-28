@@ -1,0 +1,800 @@
+/* =========================================
+   1. THEME VARIABLES & RESET
+   ========================================= */
+:root {
+  /* Palette: Modern Indigo & Slate */
+  --primary: #6366f1;           /* Vibrant Indigo */
+  --primary-dark: #4f46e5;      /* Deep Indigo */
+  --primary-glow: rgba(99, 102, 241, 0.4);
+  
+  --bg-page: #f8fafc;           /* Very light slate */
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  
+  --text-main: #1e293b;         /* Dark Slate */
+  --text-muted: #64748b;        /* Medium Slate */
+  --text-light: #94a3b8;
+  
+  --success: #10b981;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-pill: 50px;
+
+  /* Elegant Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   2. PAGE LAYOUT
+   ========================================= */
+.cart-page {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* Main Container */
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px; /* Wider summary column */
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Header Section */
+.cart-header-section {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.cart-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.cart-subtitle {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* =========================================
+   3. CART ITEMS LIST (Left Column)
+   ========================================= */
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Wrapper for animation staggered entrance */
+.cart-item-wrapper {
+  animation: slideUpFade 0.5s ease backwards;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Individual Card */
+.cart-item {
+  display: flex;
+  background: var(--bg-card);
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+  border-color: rgba(99, 102, 241, 0.1);
+}
+
+.cart-item--disabled {
+  opacity: 0.6;
+  filter: grayscale(0.8);
+  pointer-events: none;
+}
+
+/* Book Image */
+.cart-item-image {
+  width: 100px; /* Slightly larger */
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  aspect-ratio: 2/3;
+}
+
+.cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cart-item:hover .cart-item-image img {
+  transform: scale(1.08);
+}
+
+/* Item Content Info */
+.cart-item-info {
+  flex: 1;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.cart-item-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  display: block;
+  transition: color 0.2s;
+}
+
+.cart-item-title:hover {
+  color: var(--primary);
+}
+
+.cart-item-author {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.cart-item-unit-price {
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* Bottom Controls Row */
+.cart-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+/* --- THE NEW QUANTITY SELECTOR (Pill Shape) --- */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  width: fit-content;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.cart-qty:focus-within {
+  background: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.qty-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+  box-shadow: none;
+  background: transparent;
+}
+
+.qty-input {
+  width: 40px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  padding: 0;
+  outline: none;
+}
+/* Hide spin buttons */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Subtotal */
+.cart-item-subtotal {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+/* Remove Button - Clean Text Style */
+.cart-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.cart-remove-btn:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* =========================================
+   4. ORDER SUMMARY (Right Column)
+   ========================================= */
+.cart-summary-col {
+  position: relative;
+}
+
+.summary-box {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 2rem;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.summary-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed var(--bg-input);
+}
+
+/* Rows */
+.summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.summary-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-row-value {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.summary-row-free {
+  color: var(--success);
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Total Section */
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px dashed var(--bg-input);
+}
+
+.summary-total-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.summary-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Checkout Button - The "Hero" Element */
+.summary-checkout-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine effect on hover */
+.summary-checkout-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.summary-checkout-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.4);
+}
+
+.summary-checkout-btn:hover::after {
+  left: 100%;
+}
+
+.summary-checkout-btn:disabled {
+  background: var(--text-light);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Clear Cart Button */
+.summary-clear-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid var(--bg-input);
+  color: var(--text-muted);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.summary-clear-btn:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: #f25353;
+}
+
+/* =========================================
+   5. EMPTY STATE & EXTRAS
+   ========================================= */
+.cart-empty {
+  text-align: center;
+  padding: 6rem 1rem;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.cart-empty-icon {
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.cart-empty-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.cart-empty-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.btn-browse {
+  display: inline-block;
+  background: var(--text-main);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-browse:hover {
+  background: black;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+
+.cart-lock-banner {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 968px) {
+  .cart-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .summary-box {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-page {
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .cart-item {
+    padding: 1rem;
+  }
+
+  .cart-item-image {
+    width: 70px;
+  }
+  
+  .cart-item-info {
+    padding-left: 1rem;
+  }
+
+  .cart-item-bottom {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cart-qty {
+    order: 2;
+  }
+  
+  .cart-item-subtotal {
+    order: 1;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cart-remove-btn {
+    order: 3;
+    padding: 8px;
+  }
+  
+  .cart-remove-btn span {
+    display: none; /* Hide text on mobile, icon only */
+  }
+}
+
+/* ... inside Cart.css ... */
+
+.cart-continue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+  
+  /* Typography */
+  color: var(--text-muted);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  
+  /* Smooth animation */
+  transition: var(--transition);
+}
+
+/* Hover State - Turn Indigo */
+.cart-continue-btn:hover {
+  color: var(--primary);
+  transform: translateX(-5px); /* Slide left slightly */
+}
+
+/* FIX: Force Visited/Active states to match default so they don't turn blue */
+.cart-continue-btn:visited,
+.cart-continue-btn:active {
+  color: var(--text-muted);
+}
+
+/* Ensure hover stays Indigo even if visited */
+.cart-continue-btn:hover:visited,
+.cart-continue-btn:hover:active {
+  color: var(--primary);
+}
+
+/* ... (Keep your variables and basic styles from before) ... */
+
+/* =========================================
+   UPDATED INPUT STYLES (Hide Arrows)
+   ========================================= */
+.qty-input {
+  width: 44px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  padding: 0;
+  outline: none;
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Hide spin buttons for Chrome/Safari/Edge */
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.qty-input:focus {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+/* Subtotal Label (Hidden by default on Desktop) */
+.subtotal-label-mobile {
+  display: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-right: 6px;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE UI
+   ========================================= */
+@media (max-width: 640px) {
+  .cart-page {
+    padding: 1.5rem 1rem 5rem;
+  }
+
+  /* Stack the layout */
+  .cart-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Cart Item Card - Mobile Adjustment */
+  .cart-item {
+    flex-direction: row; /* Keep image side-by-side */
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .cart-item-image {
+    width: 75px; /* Smaller image */
+    height: auto;
+    aspect-ratio: 2/3;
+  }
+
+  .cart-item-info {
+    padding-left: 1rem;
+    gap: 0.75rem;
+  }
+
+  /* Top Row */
+  .cart-item-top {
+    flex-direction: column; /* Stack Title and Unit Price */
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cart-item-unit-price {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* Bottom Controls - Grid Layout for Mobile */
+  .cart-item-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Qty left, Delete right */
+    grid-template-rows: auto auto;   /* Qty/Delete top, Subtotal bottom */
+    gap: 0.75rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* 1. Quantity Selector */
+  .cart-qty {
+    grid-column: 1;
+    grid-row: 1;
+    height: 36px;
+  }
+  
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* 2. Remove Button (Icon only) */
+  .cart-remove-btn {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 8px;
+    background: var(--bg-input);
+    color: var(--text-muted);
+  }
+  
+  .cart-remove-btn span {
+    display: none; /* Hide text */
+  }
+  
+  .cart-remove-btn:active {
+    background: #fee2e2;
+    color: var(--danger);
+  }
+
+  /* 3. Subtotal (Full width row) */
+  .cart-item-subtotal {
+    grid-column: 1 / -1; /* Span full width */
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align right */
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+    font-size: 1rem;
+  }
+
+  /* Show the "Subtotal:" label on mobile */
+  .subtotal-label-mobile {
+    display: inline-block;
+  }
+
+  /* Summary Box */
+  .summary-box {
+    padding: 1.25rem;
+    position: static; /* Remove sticky on mobile */
+  }
+
+  .summary-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .summary-total-value {
+    font-size: 1.5rem;
+  }
+}
+
+.subtotal-label-mobile {
+  display: inline-block;       
+  color: var(--text-muted);     
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 8px;            ;    
+  letter-spacing: 0.05em;
+}
+
+/* 2. MOBILE ADJUSTMENTS */
+@media (max-width: 640px) {
+  
+  /* Adjust the container to align it nicely on mobile */
+  .cart-item-subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    width: 100%;
+    margin-top: 0.75rem;      
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border);
+  }
+
+  .subtotal-label-mobile {
+    font-size: 0.85rem;        
+  }
+}

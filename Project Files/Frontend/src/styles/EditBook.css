@@ -1,0 +1,415 @@
+/* --- Variables & Theming --- */
+:root {
+  --eb-bg: #f4f7fa;
+  --eb-card-bg: #ffffff;
+  --eb-primary: #4f46e5;
+  --eb-primary-hover: #4338ca;
+  --eb-text-main: #111827;
+  --eb-text-muted: #6b7280;
+  --eb-border: #e5e7eb;
+  --eb-input-bg: #f9fafb;
+  --eb-focus-ring: rgba(79, 70, 229, 0.2);
+  --eb-radius: 12px;
+  --eb-transition: all 0.2s ease;
+}
+
+/* --- Layout & Wrappers --- */
+.eb-wrapper {
+  background-color: var(--eb-bg);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.eb-header {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.eb-card {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--eb-card-bg);
+  border-radius: var(--eb-radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  border: 1px solid var(--eb-border);
+}
+
+/* --- Typography & Card Headers --- */
+.eb-card-header {
+  padding: 2rem;
+  border-bottom: 1px solid var(--eb-border);
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.eb-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eb-title-icon {
+  color: var(--eb-primary);
+  background: var(--eb-focus-ring);
+  padding: 8px;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0; /* Prevents icon from squishing on mobile */
+}
+
+.eb-title-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.eb-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--eb-text-main);
+}
+
+.eb-subtitle {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--eb-text-muted);
+}
+
+.eb-status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  white-space: nowrap; /* Keeps badge text on one line */
+}
+
+.eb-status-badge.view {
+  background-color: #f3f4f6; 
+  color: #4b5563; 
+  border: 1px solid #e5e7eb;
+}
+
+.eb-status-badge.edit {
+  background-color: #e0e7ff; 
+  color: #4338ca; 
+  border: 1px solid #c7d2fe;
+}
+
+/* --- Form Layout & Inputs --- */
+.eb-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eb-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.eb-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.eb-full-width {
+  grid-column: 1 / -1;
+}
+
+.eb-input-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--eb-text-main);
+}
+
+.eb-input-group input,
+.eb-input-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--eb-border);
+  border-radius: 8px;
+  background-color: var(--eb-input-bg);
+  color: var(--eb-text-main);
+  transition: var(--eb-transition);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.eb-input-group input:focus,
+.eb-input-group textarea:focus {
+  outline: none;
+  border-color: var(--eb-primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px var(--eb-focus-ring);
+}
+
+.eb-input-group input::placeholder,
+.eb-input-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.eb-input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* --- Disabled / View Mode Styling --- */
+.eb-input-group input:disabled,
+.eb-input-group textarea:disabled {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--eb-text-main);
+  padding: 0.5rem 0;
+  cursor: default;
+  resize: none;
+}
+
+.eb-input-group input:disabled::placeholder,
+.eb-input-group textarea:disabled::placeholder {
+  color: transparent;
+}
+
+.eb-view-text {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--eb-text-main);
+  background-color: var(--eb-bg); 
+  border-radius: 8px;
+  border: 1px solid transparent; 
+  min-height: 44px; 
+  display: flex;
+  align-items: center;
+}
+
+.eb-view-text.multiline {
+  align-items: flex-start;
+  white-space: pre-wrap; 
+  min-height: 100px; 
+  line-height: 1.5;
+}
+
+/* --- Media Section --- */
+.eb-media-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.eb-media-section label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--eb-text-main);
+}
+
+.eb-image-manager-wrapper {
+  border: 1px dashed var(--eb-border);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--eb-input-bg);
+}
+
+.eb-view-only-media {
+  pointer-events: none;
+  background-color: var(--eb-bg);
+  border: 1px solid transparent;
+}
+
+/* --- Buttons & Actions --- */
+.eb-edit-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--eb-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--eb-transition);
+}
+
+.eb-edit-toggle-btn:hover {
+  background-color: var(--eb-primary-hover);
+  box-shadow: 0 4px 12px var(--eb-focus-ring);
+}
+
+.eb-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--eb-border);
+}
+
+.eb-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--eb-text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: var(--eb-transition);
+}
+
+.eb-back-btn:hover {
+  color: var(--eb-text-main);
+  transform: translateX(-4px);
+}
+
+.eb-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--eb-border);
+  color: var(--eb-text-main);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--eb-transition);
+  text-align: center;
+}
+
+.eb-cancel-btn:hover {
+  background-color: var(--eb-bg);
+}
+
+.eb-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--eb-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--eb-transition);
+  min-width: 150px;
+}
+
+.eb-save-btn:hover:not(:disabled) {
+  background-color: var(--eb-primary-hover);
+  box-shadow: 0 4px 12px var(--eb-focus-ring);
+}
+
+.eb-save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* --- Loading States --- */
+.eb-loading-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--eb-text-muted);
+  font-weight: 500;
+}
+
+.eb-spin {
+  animation: eb-spin 1s linear infinite;
+  margin-bottom: 1rem;
+  color: var(--eb-primary);
+}
+
+@keyframes eb-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 640px) {
+  .eb-wrapper {
+    padding: 1rem 0.5rem; /* Tighter margins on mobile */
+  }
+  
+  .eb-card-header {
+    padding: 1.5rem;
+    flex-direction: column; /* Stack the header and edit button */
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .eb-title-wrapper {
+    align-items: flex-start; /* Ensure the icon aligns top if text wraps */
+  }
+
+  .eb-title-header {
+    flex-direction: column; /* Stack Title and Badge */
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .eb-form {
+    padding: 1.5rem;
+  }
+  
+  .eb-form-grid {
+    grid-template-columns: 1fr; /* Force 1 column to avoid horizontal scroll */
+  }
+
+  .eb-form-actions {
+    flex-direction: column; /* Stack Cancel/Save buttons */
+    width: 100%;
+  }
+  
+  .eb-cancel-btn, .eb-save-btn, .eb-edit-toggle-btn {
+    width: 100%; /* Make buttons full width for easy tapping */
+  }
+}
+
+/* Toast Notification for EditBook */
+.eb-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.eb-toast-success { color: #10b981; border-left: 4px solid #10b981; }
+.eb-toast-error { color: #ef4444; border-left: 4px solid #ef4444; }
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

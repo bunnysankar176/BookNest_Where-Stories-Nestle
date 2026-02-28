@@ -1,0 +1,367 @@
+/* --- Variables & Theming --- */
+:root {
+  --ab-bg: #f4f7fa;
+  --ab-card-bg: #ffffff;
+  --ab-primary: #4f46e5;
+  --ab-primary-hover: #4338ca;
+  --ab-text-main: #111827;
+  --ab-text-muted: #6b7280;
+  --ab-border: #e5e7eb;
+  --ab-input-bg: #f9fafb;
+  --ab-focus-ring: rgba(79, 70, 229, 0.2);
+  --ab-radius: 12px;
+  --ab-transition: all 0.2s ease;
+  --ab-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Layout & Wrappers --- */
+.ab-wrapper {
+  background-color: var(--ab-bg);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+.ab-header {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.ab-card {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--ab-card-bg);
+  border-radius: var(--ab-radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  border: 1px solid var(--ab-border);
+}
+
+/* --- Typography & Card Headers --- */
+.ab-card-header {
+  padding: 2rem;
+  border-bottom: 1px solid var(--ab-border);
+  background-color: #ffffff;
+}
+
+.ab-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ab-title-icon {
+  color: var(--ab-primary);
+  background: var(--ab-focus-ring);
+  padding: 8px;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.ab-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ab-text-main);
+}
+
+.ab-subtitle {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: var(--ab-text-muted);
+}
+
+/* --- Form Layout & Inputs --- */
+.ab-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ab-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.ab-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ab-full-width {
+  grid-column: 1 / -1;
+}
+
+.ab-input-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ab-text-main);
+}
+
+.ab-input-group input,
+.ab-input-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--ab-border);
+  border-radius: 8px;
+  background-color: var(--ab-input-bg);
+  color: var(--ab-text-main);
+  transition: var(--ab-transition);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* Remove number spinner arrows for a cleaner look */
+.ab-input-group input[type="number"]::-webkit-inner-spin-button,
+.ab-input-group input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ab-input-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.ab-input-group input:focus,
+.ab-input-group textarea:focus {
+  outline: none;
+  border-color: var(--ab-primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px var(--ab-focus-ring);
+}
+
+.ab-input-group input::placeholder,
+.ab-input-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.ab-input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* --- Media Section --- */
+.ab-media-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ab-media-section label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ab-text-main);
+}
+
+.ab-image-manager-wrapper {
+  padding: 0.5rem 0;
+  display: block;
+}
+
+/* --- Buttons & Actions --- */
+.ab-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ab-border);
+}
+
+.ab-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--ab-text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: var(--ab-transition);
+}
+
+.ab-back-btn:hover {
+  color: var(--ab-text-main);
+  transform: translateX(-4px);
+}
+
+.ab-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--ab-border);
+  color: var(--ab-text-main);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ab-transition);
+}
+
+.ab-cancel-btn:hover:not(:disabled) {
+  background-color: #f1f5f9;
+}
+
+.ab-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--ab-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ab-transition);
+  min-width: 160px;
+}
+
+.ab-save-btn:hover:not(:disabled) {
+  background-color: var(--ab-primary-hover);
+  box-shadow: 0 4px 12px var(--ab-focus-ring);
+}
+
+.ab-save-btn:disabled, .ab-cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Toast Notification --- */
+.ab-toast {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--ab-shadow-lg);
+  z-index: 9999;
+  animation: slideInRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.ab-toast-success { background-color: #dcfce7; color: #16a34a; border: 1px solid rgba(22, 163, 74, 0.2); }
+.ab-toast-error { background-color: #fee2e2; color: #dc2626; border: 1px solid rgba(220, 38, 38, 0.2); }
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+
+/* --- Uploading Animation Modal --- */
+.ab-upload-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.ab-upload-box {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--ab-radius);
+  box-shadow: var(--ab-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.ab-upload-box h3 { margin: 1rem 0 0.5rem 0; color: var(--ab-text-main); font-size: 1.25rem; }
+.ab-upload-box p { color: var(--ab-text-muted); font-size: 0.9rem; margin: 0 0 1.5rem 0; }
+
+.ab-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: var(--ab-border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.ab-progress-bar-fill {
+  height: 100%;
+  background-color: var(--ab-primary);
+  border-radius: 10px;
+  transition: width 0.2s ease-out;
+}
+
+.ab-progress-text {
+  font-weight: 700;
+  color: var(--ab-primary);
+  font-size: 0.9rem;
+}
+
+.ab-spin-large {
+  animation: ab-spin 1s linear infinite;
+  color: var(--ab-primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ab-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 640px) {
+  .ab-wrapper {
+    padding: 1rem 0.5rem;
+  }
+  
+  .ab-card-header {
+    padding: 1.5rem;
+  }
+  
+  .ab-form {
+    padding: 1.5rem;
+  }
+  
+  .ab-form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .ab-form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .ab-cancel-btn, .ab-save-btn {
+    width: 100%;
+  }
+
+  .ab-upload-box {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,38 @@
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The gray background star */
+.star-bg {
+  color: #e2e8f0; /* Light gray */
+  stroke: currentColor; 
+}
+
+/* The yellow overlay star (clipped by width) */
+.star-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.rating-number {
+  margin-left: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4b5563; /* Dark gray text */
+}

@@ -1,0 +1,38 @@
+:root {
+  /* Colors - Deep & Professional */
+  --primary: #4F46E5;
+  --secondary: #9333EA;
+  --accent: #F59E0B;
+  --background: #F9FAFB;
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --white: #ffffff;
+  --border: #E5E7EB;
+
+  /* Typography Scale - Professional Standard */
+  --fs-xs: 0.75rem;   /* 12px */
+  --fs-sm: 0.875rem;  /* 14px */
+  --fs-base: 1rem;    /* 16px */
+  --fs-md: 1.125rem;  /* 18px */
+  --fs-lg: 1.25rem;   /* 20px */
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Modern professional font stack */
+  background: var(--background);
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* Redesigned Container */
+.container {
+  max-width: 1200px; /* Slightly wider for modern screens */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
