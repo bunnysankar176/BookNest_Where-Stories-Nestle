@@ -158,7 +158,7 @@ cd BookNest_Where-Stories-Nestle
 **2. Install client dependencies**
 
 ```bash
-cd Client
+cd Project Files/Client
 npm install 
 ```
 
