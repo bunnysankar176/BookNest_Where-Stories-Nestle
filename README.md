@@ -314,11 +314,21 @@ BookNest uses **JWT (JSON Web Token)** based authentication:
 |---|---|
 | Book Detail | <img width="1920" height="1020" alt="Screenshot 2026-02-28 174300" src="https://github.com/user-attachments/assets/6019dd6f-214d-4292-a719-e506f9715b96" />
  |
-| Cart & Checkout | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144042" src="https://github.com/user-attachments/assets/d92144f8-601f-4b98-932f-7cee93a437cb" />
+ | Screen | Preview |
+|---|---|
+| Cart | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144042" src="https://github.com/user-attachments/assets/d92144f8-601f-4b98-932f-7cee93a437cb" />
+|
+| Screen | Preview |
+|---|---|
+| Checkout |
 <img width="1920" height="1020" alt="Screenshot 2026-02-28 144122" src="https://github.com/user-attachments/assets/91908ea5-fb3f-4bcf-b67f-43c87bdbf70e" />
  |
+ | Screen | Preview |
+|---|---|
 | Seller Dashboard | <img width="1920" height="1020" alt="Screenshot 2026-02-28 175448" src="https://github.com/user-attachments/assets/d2779c6e-bbe0-4995-a36f-27f6f8d6d781" />
  |
+ | Screen | Preview |
+|---|---|
 | Admin Panel | <img width="1920" height="1020" alt="Screenshot 2026-02-28 175231" src="https://github.com/user-attachments/assets/dc11acbf-bf98-448c-9298-8f9c1358d365" />
  |
 
