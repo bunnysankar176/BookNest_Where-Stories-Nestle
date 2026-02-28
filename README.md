@@ -151,21 +151,21 @@ Make sure the following are installed on your machine:
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/booknest.git
-cd booknest
+https://github.com/bunnysankar176/BookNest_Where-Stories-Nestle.git
+cd BookNest
 ```
 
 **2. Install client dependencies**
 
 ```bash
-cd client
-npm install
+cd Client
+npm install 
 ```
 
 **3. Install server dependencies**
 
 ```bash
-cd ../server
+cd ../Server
 npm install
 ```
 
@@ -193,8 +193,8 @@ CLOUDINARY_API_SECRET=your_api_secret
 **Start the backend server:**
 
 ```bash
-cd server
-npm start
+cd Server
+npm start && npm run dev && node server.js
 ```
 
 > Runs on: `http://localhost:5000`
@@ -202,7 +202,7 @@ npm start
 **Start the frontend development server:**
 
 ```bash
-cd client
+cd Client
 npm run dev
 ```
 
@@ -310,6 +310,8 @@ BookNest uses **JWT (JSON Web Token)** based authentication:
 |---|---|
 | Home Page | <img width="1920" height="1020" alt="Screenshot 2026-02-28 173348" src="https://github.com/user-attachments/assets/766cb8bd-6463-4897-a922-701d656e72bf" />
  |
+ | Screen | Preview |
+|---|---|
 | Book Detail | <img width="1920" height="1020" alt="Screenshot 2026-02-28 174300" src="https://github.com/user-attachments/assets/6019dd6f-214d-4292-a719-e506f9715b96" />
  |
 | Cart & Checkout | <img width="1920" height="1020" alt="Screenshot 2026-02-28 144042" src="https://github.com/user-attachments/assets/d92144f8-601f-4b98-932f-7cee93a437cb" />
